@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+#repo-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#repo-list li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+#repo-list li a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+#repo-list li a:hover {
+    text-decoration: underline;
+}
+
+#repo-list li p {
+    margin: 10px 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
+#repo-list li span {
+    font-size: 0.8em;
+    color: #777;
+}

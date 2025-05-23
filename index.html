@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Security Repositories</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Top Security Repositories</h1>
+    <div id="repo-list">
+        <!-- Repository information will be displayed here -->
+    </div>
+    <script>
+        fetch('https://api.github.com/search/repositories?q=topic:security&sort=stars&order=desc')
+            .then(response => response.json())
+            .then(data => {
+                const repoListDiv = document.getElementById('repo-list');
+                if (data.items && data.items.length > 0) {
+                    const ul = document.createElement('ul');
+                    data.items.forEach(repo => {
+                        const li = document.createElement('li');
+                        
+                        const repoLink = document.createElement('a');
+                        repoLink.href = repo.html_url;
+                        repoLink.textContent = repo.name;
+                        repoLink.target = '_blank'; // Open in new tab
+                        
+                        const description = document.createElement('p');
+                        description.textContent = repo.description;
+                        
+                        const stars = document.createElement('span');
+                        stars.textContent = `Stars: ${repo.stargazers_count} | `;
+                        
+                        const forks = document.createElement('span');
+                        forks.textContent = `Forks: ${repo.forks_count}`;
+                        
+                        li.appendChild(repoLink);
+                        li.appendChild(description);
+                        li.appendChild(stars);
+                        li.appendChild(forks);
+                        
+                        ul.appendChild(li);
+                    });
+                    repoListDiv.appendChild(ul);
+                } else {
+                    repoListDiv.textContent = 'No repositories found.';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                const repoListDiv = document.getElementById('repo-list');
+                repoListDiv.textContent = 'Failed to load repositories.';
+            });
+    </script>
+</body>
+</html>
