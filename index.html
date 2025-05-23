@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Top Security Repositories</h1>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h1>Top Security Repositories</h1>
+        <button id="dark-mode-toggle">Toggle Dark Mode</button>
+    </div>
     <div id="filter-container">
         <input type="text" id="topic-input" placeholder="Enter security topic...">
         <button id="filter-button">Filter</button>
@@ -75,6 +78,38 @@
 
         // Initial load
         fetchAndDisplayRepos();
+
+        // Dark Mode Toggle Logic
+        const darkModeButton = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                body.classList.add('dark-mode');
+                darkModeButton.textContent = 'Toggle Light Mode';
+            } else {
+                body.classList.remove('dark-mode');
+                darkModeButton.textContent = 'Toggle Dark Mode';
+            }
+        }
+
+        // On load, check localStorage and apply theme
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            applyTheme(currentTheme);
+        } else {
+            applyTheme('light'); // Default to light mode
+        }
+
+        darkModeButton.addEventListener('click', () => {
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'light');
+                applyTheme('light');
+            } else {
+                localStorage.setItem('theme', 'dark');
+                applyTheme('dark');
+            }
+        });
     </script>
 </body>
 </html>

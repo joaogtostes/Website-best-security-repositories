@@ -1,41 +1,79 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: #f4f4f4;
-    color: #333;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    margin: 0; /* Remove default margin */
+    padding: 20px; /* Add padding to body instead of margin */
+    background-color: #f6f8fa; /* GitHub-like light grey */
+    color: #24292e; /* GitHub-like dark grey text */
+    line-height: 1.5; /* Improved readability */
 }
 
 h1 {
     text-align: center;
-    color: #333;
-    margin-bottom: 20px; /* Added margin to separate from filter */
+    color: #24292e; /* Matches body text color */
+    margin-bottom: 20px;
+    font-size: 2em; /* Larger H1 */
 }
 
 #filter-container {
-    text-align: center; /* Center the input and button */
+    text-align: center;
     margin-bottom: 20px;
 }
 
 #topic-input {
     width: 300px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-right: 10px; /* Add some space between input and button */
+    padding: 8px 12px; /* GitHub-like padding */
+    border: 1px solid #e1e4e8; /* GitHub-like border */
+    border-radius: 6px; /* GitHub-like border-radius */
+    margin-right: 10px;
+    font-size: 14px; /* Consistent font size */
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-#filter-button {
-    padding: 8px 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
+#topic-input:focus {
+    border-color: #0366d6;
+    box-shadow: 0 0 0 3px rgba(3, 102, 214, 0.3);
+    outline: none;
+}
+
+/* General Button Styling */
+.btn {
+    padding: 6px 16px; /* GitHub-like padding */
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    border-radius: 6px;
     cursor: pointer;
+    user-select: none;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+#filter-button { /* GitHub Primary Button - Light Mode */
+    background-color: #2ea44f;
+    color: white;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    box-shadow: 0 1px 0 rgba(27, 31, 35, 0.04), inset 0 1px 0 hsla(0, 0%, 100%, 0.25);
 }
 
 #filter-button:hover {
-    background-color: #0056b3;
+    background-color: #2c974b;
+    border-color: rgba(27, 31, 35, 0.15);
 }
+
+#dark-mode-toggle { /* GitHub Secondary Button - Light Mode */
+    background-color: #f6f8fa;
+    color: #24292e;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    box-shadow: 0 1px 0 rgba(27, 31, 35, 0.04);
+}
+
+#dark-mode-toggle:hover {
+    background-color: #f3f4f6;
+    border-color: rgba(27, 31, 35, 0.15);
+}
+
 
 #repo-list ul {
     list-style-type: none;
@@ -44,16 +82,25 @@ h1 {
 
 #repo-list li {
     background-color: #fff;
-    border: 1px solid #ddd;
-    margin-bottom: 10px;
-    padding: 15px;
-    border-radius: 5px;
+    border: 1px solid #e1e4e8; /* GitHub border color */
+    margin-bottom: 16px; /* Increased margin */
+    padding: 16px; /* GitHub-like padding */
+    border-radius: 6px; /* GitHub-like border-radius */
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+#repo-list li:hover {
+    background-color: #f6f8fa; /* Subtle hover effect */
+    border-color: #d1d5da;
 }
 
 #repo-list li a {
     text-decoration: none;
-    color: #007bff;
-    font-weight: bold;
+    color: #0366d6; /* GitHub blue */
+    font-weight: 600; /* Bolder link text */
+    font-size: 1.25em; /* Larger repo name */
+    display: block; /* Make it block to allow margin-bottom */
+    margin-bottom: 8px;
 }
 
 #repo-list li a:hover {
@@ -61,12 +108,80 @@ h1 {
 }
 
 #repo-list li p {
-    margin: 10px 0;
+    margin: 0 0 8px 0; /* Adjusted margin */
     font-size: 0.9em;
-    color: #555;
+    color: #586069; /* GitHub secondary text color */
 }
 
 #repo-list li span {
-    font-size: 0.8em;
-    color: #777;
+    font-size: 0.85em; /* Slightly larger */
+    color: #586069; /* GitHub secondary text color */
+    margin-right: 16px; /* Space between stars and forks */
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #0d1117; /* GitHub dark background */
+    color: #c9d1d9; /* GitHub dark text */
+}
+
+body.dark-mode h1 {
+    color: #c9d1d9;
+}
+
+body.dark-mode #topic-input {
+    background-color: #0d1117; /* GitHub dark input background */
+    color: #c9d1d9;
+    border: 1px solid #30363d; /* GitHub dark border */
+}
+
+body.dark-mode #topic-input:focus {
+    border-color: #58a6ff; /* GitHub dark mode blue for focus */
+    box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.3);
+}
+
+body.dark-mode #filter-button { /* GitHub Primary Button - Dark Mode */
+    background-color: #238636; /* GitHub dark mode green */
+    color: #ffffff;
+    border: 1px solid rgba(240, 246, 252, 0.1);
+    box-shadow: 0 1px 0 rgba(27, 31, 35, 0.04), inset 0 1px 0 hsla(0, 0%, 100%, 0.25); /* Re-evaluate shadow for dark */
+}
+
+body.dark-mode #filter-button:hover {
+    background-color: #2ea043;
+    border-color: rgba(240, 246, 252, 0.1);
+}
+
+body.dark-mode #dark-mode-toggle { /* GitHub Secondary Button - Dark Mode */
+    background-color: #21262d; /* GitHub dark mode secondary button bg */
+    color: #c9d1d9;
+    border: 1px solid #30363d; /* GitHub dark mode border */
+    box-shadow: 0 1px 0 rgba(27, 31, 35, 0.04); /* Re-evaluate shadow for dark */
+}
+
+body.dark-mode #dark-mode-toggle:hover {
+    background-color: #30363d;
+    border-color: #8b949e; /* Lighter border on hover */
+}
+
+body.dark-mode #repo-list li {
+    background-color: #0d1117; /* Match body background or slightly lighter like #161b22 */
+    border: 1px solid #30363d; /* GitHub dark border */
+}
+
+body.dark-mode #repo-list li:hover {
+    background-color: #161b22; /* Subtle hover for dark mode */
+    border-color: #8b949e; /* Lighter border on hover */
+}
+
+body.dark-mode #repo-list li a {
+    color: #58a6ff; /* GitHub dark mode blue links */
+}
+
+body.dark-mode #repo-list li p {
+    color: #8b949e; /* GitHub dark mode secondary text */
+}
+
+body.dark-mode #repo-list li span {
+    color: #8b949e; /* GitHub dark mode secondary text */
 }
